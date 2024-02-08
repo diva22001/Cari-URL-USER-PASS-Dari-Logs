@@ -11,3 +11,8 @@ Kode ini merupakan program Python sederhana yang dirancang untuk mencari file 'p
    Sebelum menjalankan program, instal dependensi dengan menjalankan perintah berikut:
    ```bash
    pip install tqdm
+
+3. **Run:**
+   Lalu jalankan dengan perintah berikut:
+   ```bash
+   python 
