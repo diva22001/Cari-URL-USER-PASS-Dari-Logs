@@ -39,23 +39,8 @@ def cari_file_password(file_path, output_file):
             unique_lines.add(gabung_data)
 
         # Pola ketiga
-        matches_ketiga = re.finditer(r'SOFT:\s*(.*?)\nURL:\s*(.*?)\nUSER:\s*(.*?)\nPASS:\s*(.*?)\n', file_content)
+        matches_ketiga = re.finditer(r'URL:\s*(.*?)\nUSER:\s*(.*?)\nPASS:\s*(.*?)\n', file_content)
         for match in matches_ketiga:
-            soft = match.group(1).strip()
-            url = match.group(2).strip()
-            username = match.group(3).strip()
-            password = match.group(4).strip()
-
-            # Skip baris yang tidak memiliki URL, username, atau password atau mengandung kata '[NOT_SAVED]' atau 'UNKNOWN'
-            if not url or not username or not password or '[NOT_SAVED]' in password or '[NOT_SAVED]' in username or 'UNKNOWN' in url or 'UNKNOWN' in username:
-                continue
-
-            gabung_data = f"{url}:{username}:{password}"
-            unique_lines.add(gabung_data)
-
-        # Pola keempat
-        matches_keempat = re.finditer(r'URL:\s*(.*?)\nUsername:\s*(.*?)\nPassword:\s*(.*?)\nApplication:', file_content)
-        for match in matches_keempat:
             url = match.group(1).strip()
             username = match.group(2).strip()
             password = match.group(3).strip()
@@ -66,6 +51,7 @@ def cari_file_password(file_path, output_file):
 
             gabung_data = f"{url}:{username}:{password}"
             unique_lines.add(gabung_data)
+
 
         # Menuliskan baris-baris unik ke file output
         with open(output_file, 'a', encoding='utf-8') as output_file:
