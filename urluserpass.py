@@ -32,7 +32,7 @@ def cari_file_password(file_path, output_file):
             password = match.group(3).strip()
 
             # Skip baris yang tidak memiliki URL, login, atau password atau mengandung kata '[NOT_SAVED]' atau 'UNKNOWN'
-            if not url or not password or '[NOT_SAVED]' in password or 'UNKNOWN' in url or 'UNKNOWN' in login:
+            if not url or not password or not login or '[NOT_SAVED]' in password or '[NOT_SAVED]' in login or 'UNKNOWN' in url or 'UNKNOWN' in login or 'UNKNOWN' in password:
                 continue
 
             gabung_data = f"{url}:{login}:{password}"
